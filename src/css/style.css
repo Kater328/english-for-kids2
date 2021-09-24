@@ -1,0 +1,441 @@
+html {
+    font-size: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --color-dark: #545454;
+    --color-purple: #C465E9;
+    --color-purple-light: #E7B1FC;
+    --color-light: #ffffff;
+    --color-green: #85FFAA;
+}
+
+h1 {
+    visibility: hidden;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.play_btn {
+    margin: 0 25% 5rem 25%;
+    height: 7rem;
+    width: 50%;
+    border-radius: 2rem;
+    border: none;
+    background-color: var(--color-purple);
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 160%;
+    color: var(--color-light);
+    cursor: pointer;
+}
+
+.play_btn:hover, .repeat_btn:hover, .statistic_btn:hover {
+    background-color: var(--color-green);
+    color: var(--color-dark);
+    box-shadow: -0.1rem 0.3rem 1rem 0.2rem rgba(0,0,0,.5);
+}
+
+.repeat_btn {
+    margin: 0 calc(50% - 3rem) 6rem calc(50% - 3rem);
+    height: 6rem;
+    width: 6rem;
+    border-radius: 70%;
+    border: none;
+    background-color: var(--color-purple);
+    cursor: pointer;
+}
+
+.statistic_btn {
+    margin: 2rem 5rem;
+    height: 5rem;
+    width: 10rem;
+    border: none;
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 160%;
+    color: var(--color-light);
+    background-color: var(--color-purple);
+    cursor: pointer;
+}
+
+.statistics_table {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    text-align: center;
+    line-height: 160%;
+    cursor: default;
+}
+
+.statistics_table tr {
+    font-size: 2rem;
+    color: var(--color-dark);
+}
+
+.statistics_table tr:hover {
+    background-color: var(--color-purple);
+    color: var(--color-light);
+}
+
+tr:nth-child(1) {
+    border-top: 0.5rem solid var(--color-green);
+    border-bottom: 0.5rem solid var(--color-green);
+    background-color: var(--color-dark);
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--color-light);
+}
+
+.statistics_table td {
+    padding: 1rem;
+    width: 1%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    height: 10rem;
+    background-color: var(--color-purple-light);
+    box-shadow: -0.1rem 0.3rem 1rem 0.2rem rgba(0,0,0,.5);
+}
+
+.hamburger {
+    display: inline-block;
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+    width: 3rem;
+    height: 2.3rem;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.hamburger_line, .hamburger::before, .hamburger::after {
+    display: inline-block;
+    content: "";
+    position: absolute;
+    background-color: var(--color-dark);
+    width: 100%;
+    height: 0.3rem;
+    transition: transform 0.2s ease;
+}
+
+.hamburger_line {
+    top: calc(50% - 0.1rem);
+}
+
+.hamburger::before {
+    top: 0;
+    left: 0;
+}
+
+.hamburger::after {
+    bottom: 0;
+    left: 0;
+}
+
+.show_close > .hamburger_line {
+    visibility: hidden;
+}
+
+.show_close::before {
+    transform: translate(0, 1rem) rotate(-45deg);
+    background-color: var(--color-light);
+}
+
+.show_close::after {
+    transform: translate(0, -1rem) rotate(45deg);
+    background-color: var(--color-light);
+}
+
+.header_menu {
+    position: fixed;
+    top: 0;
+    left: -40rem;
+    width: 40rem;
+    height: 100vh;
+    overflow-y: scroll;
+    background: var(--color-purple);
+    transition: transform 0.2s ease;
+    z-index: 1;
+}
+
+.show_header_menu {
+    transform: translateX(40rem);
+}
+
+.header_menu_list {
+    margin: 3rem 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 160%;
+    color: var(--color-light);
+}
+
+.header_menu_list li {
+    margin: 1rem 0;
+    cursor: pointer;
+}
+
+.header_menu_list li:hover {
+    color: var(--color-green);
+}
+
+.header_menu_item_active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.switch {
+    position: absolute;
+    top: 3rem;
+    right: 5rem;
+    cursor: pointer;
+}
+
+.input_switch{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+  
+.label_switch {
+    cursor: pointer;
+    width: 15rem;
+    height: 4.6rem;
+    background: var(--color-dark);
+    color: var(--color-light);
+    display: block;
+    border-radius: 10rem;
+    position: relative;
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 180%;
+}
+  
+.label_switch:after {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    left: 0.5rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    background: var(--color-light);
+    border-radius: 9rem;
+    transition: 0.3s;
+}
+  
+.input_switch:checked + .label_switch {
+    background: var(--color-green);
+    color: var(--color-dark);
+}
+  
+.input_switch:checked + .label_switch:after {
+    left: calc(100% - 0.5rem);
+    transform: translateX(-100%);
+}
+  
+.label_switch:active:after {
+    width: 15rem;
+}
+
+.game {
+    margin: 3rem 8rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: calc(100vh - 21rem);
+}
+
+.stars_block {
+    width: 100vw;
+    height: 5rem;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
+.star_img {
+    width: 5rem;
+    height: 5rem;
+    margin: 0 0.5rem;
+}
+
+.card {
+    margin: 1.5rem;
+    width: 30rem;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: var(--color-purple-light);
+    border: 1px solid var(--color-purple);
+    cursor: pointer;
+}
+
+.card:hover, .train_card:hover, .play_card:hover {
+    box-shadow: -0.1rem 0.5rem 1.5rem 0 rgba(0,0,0,.7);
+}
+
+.menu_img {
+    margin: 1rem 0;
+    border-radius: 10rem;
+    width: 65%;
+    height: 60%;
+}
+
+.title {
+    width: 100%;
+    height: 4rem;
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 160%;
+    background-color: var(--color-purple);
+    color: var(--color-light);
+}
+
+.train_card {
+    display: block;
+    border-radius: 0;
+    cursor: default;
+    margin: 1.5rem;
+    width: 30rem;
+    height: 25rem;
+    background-color: var(--color-purple-light);
+    border: 1px solid var(--color-purple);
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.turning_card {
+    transform: rotateY(180deg);
+}
+
+.card_face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+  
+.card_face-back {
+    transform: rotateY(180deg);
+}
+
+.train_img {
+    width: 100%;
+    height: 82%;
+}
+
+.turn_img {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    position: relative;
+    left: 25rem;
+    top: -3.5rem;
+}
+
+.topic_title {
+    display: grid;
+}
+
+.play_card {
+    margin: 1.5rem;
+    width: 30rem;
+    height: 25rem;
+    border: 1px solid var(--color-purple);
+    overflow: hidden;
+}
+
+.play_img {
+    position: relative;
+    left: -10%;
+    height: 100%;
+}
+
+.win_window {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 15rem);
+}
+
+.block_comment {
+    font-size: 4rem;
+    line-height: 160%;
+    color: var(--color-dark);
+}
+
+.win_img {
+    width: 50rem;
+}
+
+.footer {
+    height: 5rem;
+    background-color: var(--color-purple);
+    padding: 0 20%;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer_item {
+    color: var(--color-light);
+    font-size: 2rem;
+}
+
+@media (max-width: 600px) {
+
+    .statistic_btn {
+        margin: 2rem 2rem;
+    }
+
+    .header_menu {
+        width: 32rem;
+    }
+
+    .game {
+        margin: 2rem 2rem;
+    }
+
+    .star_img {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .card, .train_card, .play_card {
+        margin: 0.5rem;
+        width: 27rem;
+    }
+
+    .turn_img {
+        left: 22rem;
+    }
+    
+    .block_comment {
+        font-size: 3rem;
+    }
+
+    .win_img {
+        width: 30rem;
+    }
+}
